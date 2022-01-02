@@ -1,5 +1,5 @@
 #include <iostream>
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
@@ -14,20 +14,32 @@ int main()
 
     int T;
     cin >> T;
-    while(T--)
+    while (T--)
     {
         string S;
         cin >> S;
         int n = S.size();
 
         //sort first half
-        sort(S.begin(), S.begin() + n/2);
+        sort(S.begin(), S.begin() + n / 2);
 
         //sort second half
-        sort(S.begin()+ ceil(n/2.0f), S.end());
+        sort(S.begin() + ceil(n / 2.0f), S.end());
 
-        //compare two halves
-        cout << (S.substr(0,n/2) == S.substr(ceil(n/2.0f),n/2)? "YES" : "NO") << endl;
+        bool is_lapin = true;
+
+        //compare each character of first half with that of second half
+        for (int i = 0, j = ceil(n / 2.0f); i < n / 2; i++, j++)
+        {
+            //if there are different characters in the same positions of two halves
+            //then they are not lapindromes
+            if (S[i] != S[j])
+            {
+                is_lapin = false;
+                break;
+            }
+        }
+        cout << (is_lapin ? "YES" : "NO") << endl;
     }
 
     return 0;
