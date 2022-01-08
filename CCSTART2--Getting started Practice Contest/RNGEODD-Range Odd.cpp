@@ -1,5 +1,4 @@
 //https://www.codechef.com/CCSTART2/problems/RNGEODD
-
 #include <iostream>
 // #include<bits/stdc++.h>
 using namespace std;
@@ -16,9 +15,8 @@ int main()
 
     int l, r;
     cin >> l >> r;
-    //if l is odd,assign to i
-    //if l is not odd, assign the next number to i(which is odd)
-    for (int i = (l % 2 ? l : l + 1); i <= r; i += 2)
+    //start from l+1 if l is even
+    for (int i = l + (l % 2 == 0); i <= r; i += 2)
     {
         cout << i << ' ';
     }
